@@ -1,0 +1,61 @@
+==============================
+PASSOS INICIAIS
+==============================
+1. Criar VEnv
+2. Instalar Django (pip install django)
+3. Instalar Widget Tweaks(pip install django-widget-tweaks)
+4. Instalar Djongo (pip install djongo)
+5. pip install dnspython
+6. Criar o projeto (django-admin startproject "NomeProjeto" .
+7. Criar o app (python manage.py startapp "NomeApp")
+
+==============================
+PASSOS NO ATLAS DO MONGO
+==============================
+1. Criar cluster
+2. Connect e copiar "api do cluster"
+
+==============================
+ALTERAÇÕES NO SETTINGS.PY:
+==============================
+- Adicionar "localhost" ao array ALLOWED_HOSTS
+- Adicionar "NomeApp" ao array INSTALLED_APPS
+- LANGUAGE_CODE = 'pt-BR'
+- TIME_ZONE = 'America/Sao_Paulo'
+- Editar dict DATABASES:
+	- "ENGINE" : "DJONGO"
+	- "NAME" : "NomeDatabase"
+	- "HOST" : "api do cluster"
+
+
+==============================
+ALTERAÇÕES NO MODELS.PY:
+==============================
+- Adicionar imports:
+	- from djongo import models
+	- from django.conf import settings
+	- from django.utils import timezone
+- Criar classe que representa a coleção (Video):
+	- Cria lista de options do select
+		- FUNC_CHOICES=(
+	        ('Music','Music'),
+	        ('Education','Education'),
+	        ('Kitties','Kitties'),
+	        ('Doggos','Doggos'),
+        	('People Falling','People Falling')
+			)
+	- Cria as variaveis/campos da coleção:
+		- titulo = models.CharField(max_length=200)
+		- thumbs_up = models.IntegerField()
+		- thumbs_down = models.IntegerField()
+		- theme = models.CharField(max_length=100,choices = FUNC_CHOICES)
+	- Cria método __str__:
+		def __str__(self):
+			return self.titulo
+==============================
+ALTERAÇÕES NO ADMIN.PY:
+==============================
+- Importa classe da coleção (Video):
+	- from .models import Video
+- Registra classe
+	- admin.site.register(Video)
