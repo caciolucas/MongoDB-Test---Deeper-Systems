@@ -1,8 +1,7 @@
 # FakeTube 
-#### A simple Django/MongoDB system to solve the Deeper Systems test
+## A simple Django/MongoDB system to solve the Deeper Systems test
 
-#### First of all
-
+### How to execute
 
 Go to the folder via CMD and create a Virtual Enviroment
 
