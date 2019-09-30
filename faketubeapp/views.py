@@ -32,7 +32,6 @@ def ranking(request):
     education_videos = Video.objects.filter(theme='Education')
     kitties_videos = Video.objects.filter(theme='Kitties')
     doggos_videos = Video.objects.filter(theme='Doggos')
-    people_videos = Video.objects.filter(theme='People Falling')
 
     total_thumbs={}
 
@@ -41,7 +40,6 @@ def ranking(request):
     thumbs_total_education=0
     thumbs_total_kitties=0
     thumbs_total_doggos=0
-    thumbs_total_people=0
 
     for video in music_videos:
 	    thumbs_total_music+=video.thumbs_up+video.thumbs_down/2
@@ -53,16 +51,12 @@ def ranking(request):
 	    thumbs_total_kitties+=video.thumbs_up+video.thumbs_down/2
     for video in doggos_videos:
 	    thumbs_total_doggos+=video.thumbs_up+video.thumbs_down/2
-    for video in people_videos:
-	    thumbs_total_people+=video.thumbs_up+video.thumbs_down/2
     
-    total_thumbs["Music"]=thumbs_total_music
-    total_thumbs["Entertainment"]=thumbs_total_entertainment
-    total_thumbs["Education"]=thumbs_total_education
-    total_thumbs["Kitties"]=thumbs_total_kitties
-    total_thumbs["Doggos"]=thumbs_total_doggos
-    total_thumbs["People Falling"]=thumbs_total_people
-    
+    total_thumbs["Music"]=float(thumbs_total_music)
+    total_thumbs["Entertainment"]=float(thumbs_total_entertainment)
+    total_thumbs["Education"]=float(thumbs_total_education)
+    total_thumbs["Kitties"]=float(thumbs_total_kitties)
+    total_thumbs["Doggos"]=float(thumbs_total_doggos)
      
 
     ranked=[]
