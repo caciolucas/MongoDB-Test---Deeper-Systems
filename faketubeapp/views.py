@@ -42,15 +42,15 @@ def ranking(request):
     thumbs_total_doggos=0
 
     for video in music_videos:
-	    thumbs_total_music+=video.thumbs_up+video.thumbs_down/2
+	    thumbs_total_music+=video.thumbs_up-video.thumbs_down/2
     for video in education_videos:
-	    thumbs_total_education+=video.thumbs_up+video.thumbs_down/2
+	    thumbs_total_education+=video.thumbs_up-video.thumbs_down/2
     for video in entertainment_videos:
-	    thumbs_total_entertainment+=video.thumbs_up+video.thumbs_down/2
+	    thumbs_total_entertainment+=video.thumbs_up-video.thumbs_down/2
     for video in kitties_videos:
-	    thumbs_total_kitties+=video.thumbs_up+video.thumbs_down/2
+	    thumbs_total_kitties+=video.thumbs_up-video.thumbs_down/2
     for video in doggos_videos:
-	    thumbs_total_doggos+=video.thumbs_up+video.thumbs_down/2
+	    thumbs_total_doggos+=video.thumbs_up-video.thumbs_down/2
     
     total_thumbs["Music"]=float(thumbs_total_music)
     total_thumbs["Entertainment"]=float(thumbs_total_entertainment)
