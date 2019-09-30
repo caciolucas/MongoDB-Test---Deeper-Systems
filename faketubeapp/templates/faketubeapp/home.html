@@ -91,10 +91,10 @@
                         <small>{{ video.thumbs_up }} &#x1F44D</small>
                         <small>{{ video.thumbs_down }} &#128078</small>
                         <br><br>
-                        <a target="_blank" href="{% url 'like' video.id 1 %}">
+                        <a href="{% url 'like' video.id 1 %}">
                             <button class="btn btn-secondary">&#x1F44D</button>
                         </a>
-                        <a target="_blank" href="{% url 'like' video.id 0 %}">
+                        <a href="{% url 'like' video.id 0 %}">
                             <button class="btn btn-secondary" style="float: right">&#128078</button>
                         </a>
                     </p>
